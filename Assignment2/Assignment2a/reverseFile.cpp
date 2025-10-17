@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 2a
+ */
+
+
 #include "main.h"
 #include <fstream>
 #include <filesystem>
@@ -6,8 +13,8 @@
 
 int reverseFile() {
 	int size_of_file;
-	const std::string sourcePath = "source.pdf";
-	const std::string outputPath = "temppdf.pdf";
+	const std::string sourcePath = "source.pdf"; // sets an input file path
+	const std::string outputPath = "temppdf.pdf"; // sets an output file path
 	std::ifstream infile;
 	infile.open(sourcePath, std::ios::binary|std::ios::in);
 
