@@ -13,7 +13,7 @@ const std::string outputPath
 ## Build
 make
 ## Run
-./hello
+./reverseFile
 ## Clean
 make clean
 ## Clean all
