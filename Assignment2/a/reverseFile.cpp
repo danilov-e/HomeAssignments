@@ -9,12 +9,26 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
-
+#include <iostream>
 
 int reverseFile() {
 	int size_of_file;
-	const std::string sourcePath = "source.pdf"; // sets an input file path
-	const std::string outputPath = "temppdf.pdf"; // sets an output file path
+	std::string sourcePath; // sets an input file path
+	std::string outputPath; // sets an output file path
+	
+	std::cout << "Enter path to an input file (or press Enter to set it as default: source.pdf" << std::endl;
+	std::getline(std::cin, sourcePath);
+	if (sourcePath == "") {
+	sourcePath = "source.pdf";
+	}
+
+	std::cout << "Enter path to an output file (or press Enter to set it as default: temppdf.pdf" << std::endl;
+        std::getline(std::cin, outputPath);
+        if (outputPath == "") {
+        outputPath = "temppdf.pdf";
+        }
+
+
 	std::ifstream infile;
 	infile.open(sourcePath, std::ios::binary|std::ios::in);
 
@@ -43,4 +57,5 @@ int reverseArray(char* array, int size_of_array) {
 	}
 	return 0;
 }
+
 
