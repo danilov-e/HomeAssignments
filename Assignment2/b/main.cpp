@@ -1,6 +1,6 @@
 #include "main.h"
 
 int main() {
-	countValue();
+	calculateValue();
 	return 0;
 }

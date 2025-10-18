@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int countValue();
+int calculateValue();
 
 #endif

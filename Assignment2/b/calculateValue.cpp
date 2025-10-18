@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-int countValue() {
+int calculateValue() {
 	std::string input;
 	char tempChar;
 
