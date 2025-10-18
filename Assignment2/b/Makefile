@@ -1,7 +1,7 @@
-PROJECT = countValue
+PROJECT = calculateValue
 CXX = g++
 CXXFLAGS = -Wall -Wextra
-SRC = main.cpp countValue.cpp
+SRC = main.cpp calculateValue.cpp
 OBJ = $(SRC:.cpp=.o)
 
 .PHONY: all clean cleanall
