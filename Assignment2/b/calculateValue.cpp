@@ -15,7 +15,7 @@ int calculateValue() {
 	std::cout << "Enter a mathematical expression in Reverse Polish Notation: " << std::endl;
 	std::getline(std::cin, input);
 	const int size_of_input = input.length();
-	int* stack = new int[size_of_input];
+	float* stack = new float[size_of_input];
 	int top = -1;
 
 	for (int i = 0; i < size_of_input; i++) {
@@ -23,7 +23,9 @@ int calculateValue() {
 		if (tempChar == ' ') {continue;}
 
 		if (tempChar >= '0' && tempChar <= '9') {
-			int number = 0;
+			float number = 0;
+			float fractionalPart = 0;
+			float multiplier = 1;
 			while (i < size_of_input && input[i] >= '0' && input[i] <= '9') {
 				tempChar = input[i];
 				number = number * 10;
@@ -31,7 +33,17 @@ int calculateValue() {
 				i += 1;
 			}
 			top += 1;
-			stack[top] = number; //put number in the stack
+
+			if (input[i] == '.' || input[i] == ',') {
+				while (i+1 < size_of_input && input[i+1] >= '0' && input[i+1] <= '9') {
+					tempChar = input[i+1];
+					fractionalPart += (tempChar - '0');
+					multiplier *= 0.1;
+					i += 1;
+				}
+			}
+			stack[top] = number + fractionalPart * multiplier; //put number in the stack
+			continue;
 		}
 		else {
 			if (tempChar == '+') {stack[top-1] = stack[top-1] + stack[top];}
@@ -42,7 +54,7 @@ int calculateValue() {
 		}
 	}
 
-	int value = stack[top];
+	float value = stack[top];
 	delete[] stack;
 	std::cout << value << std::endl;
 	return value;
