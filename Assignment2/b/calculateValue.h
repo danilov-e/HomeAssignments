@@ -4,8 +4,8 @@
  * My home assignment 2a
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef CALCULATEVALUE_H
+#define CALCULATEVALUE_H
 
 int calculateValue();
 

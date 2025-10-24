@@ -4,7 +4,7 @@
  * My home assignment 2a
  */
 
-#include "main.h"
+#include "calculateValue.h"
 #include <string>
 #include <iostream>
 
