@@ -5,7 +5,7 @@
  */
 
 
-#include "main.h"
+#include "reverseFile.h"
 
 int main() {
 	reverseFile();

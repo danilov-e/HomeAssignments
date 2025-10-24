@@ -5,7 +5,7 @@
  */
 
 
-#include "main.h"
+#include "reverseFile.h"
 #include <fstream>
 #include <filesystem>
 #include <string>

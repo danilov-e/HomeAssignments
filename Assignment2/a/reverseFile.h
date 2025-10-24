@@ -4,8 +4,8 @@
  * My home assignment 2a
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef REVERSEFILE_H
+#define REVERSEFILE__H
 
 int reverseFile();
 int reverseArray(char*, int);
