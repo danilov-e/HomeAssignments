@@ -1,22 +1,18 @@
-class Gun {
-public:
-  Gun(uint damage = 10, uint range = 50)
-  : _damage(damage), _range(range) {}
+#include "Gun.h"
 
-  uint Gun::getDamage() {return _damage;}
-  bool Gun::setDamage(uint damage) {_damage=damage;}
-  uint Gun::getRange() {return _range;}
-  bool Gun::setRange(uint range) {_range=range;}
+Gun::Gun(unsigned int damage, unsigned int range)
+: _damage(damage), _range(range) {}
 
-  bool Gun::upgrade() {
-    return true;
-  }
+unsigned int Gun::getDamage() {return _damage;}
+void Gun::setDamage(unsigned int damage) {_damage=damage;}
+unsigned int Gun::getRange() {return _range;}
+void Gun::setRange(unsigned int range) {_range=range;}
 
-  bool Gun::enchant() {
-    return true;
-  }
-
-private:
-  uint _damage;
-  uint _range;
+bool Gun::upgrade() {
+  return true;
 }
+
+bool Gun::enchant() {
+  return true;
+}
+
