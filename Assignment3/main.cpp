@@ -1,11 +1,11 @@
-#include "Gun.h"
+#include "Transformer.h"
+#include <iostream>
 
 int main() {
-  Gun gun1(42, 52);
-  gun1.upgrade();
-  gun1.getDamage();
-  gun1.setDamage(10);
-  gun1.getDamage();
+  Battlefield b1(100, 125);
+  std::cout << b1.getWidth() << std::endl;
+  b1.setWidth(104633460);
+  std::cout << b1.getWidth() << std::endl;
   return 0;
 }
 
