@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #ifndef AUTOBOT_H
 #define AUTOBOT_H
 

@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #include "Decepticon.h"
 
 Decepticon::Decepticon(Battlefield* battlefield, unsigned int level, unsigned int strength,

@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #ifndef MAXIMAL_H
 #define MAXIMAL_H
 

@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #include "Battlefield.h"
 
 Battlefield::Battlefield(unsigned int length, unsigned int width)

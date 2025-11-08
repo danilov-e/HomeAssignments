@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #include "Gun.h"
 
 Gun::Gun(unsigned int damage, unsigned int range)

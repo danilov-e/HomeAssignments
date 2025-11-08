@@ -1,3 +1,10 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
+
 #include "Transformer.h"
 
 Transformer::Transformer(Battlefield* battlefield, unsigned int level, unsigned int strength, unsigned int ammo, unsigned int health)
