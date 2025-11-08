@@ -1,7 +1,8 @@
 #include "Transformer.h"
 
 Transformer::Transformer(Battlefield* battlefield, unsigned int level, unsigned int strength, unsigned int ammo, unsigned int health)
-: _level(level), _strength(strength), _ammo(ammo), _health(health), _gun(10, 500) {}
+: _battlefield(battlefield), _level(level), _strength(strength), _ammo(ammo), _health(health), _gun(10, 500) {}
+Transformer::~Transformer() {}
 
 unsigned int Transformer::getLevel() {return _level;}
 void Transformer::setLevel(unsigned int level) {_level = level;}
@@ -17,6 +18,8 @@ unsigned int Transformer::getBattlefieldLength() {return _battlefield->getLength
 void Transformer::setBattlefieldLength(unsigned int length) {_battlefield->setLength(length);}
 unsigned int Transformer::getBattlefieldWidth() {return _battlefield->getWidth();}
 void Transformer::setBattlefieldWidth(unsigned int width) {_battlefield->setWidth(width);}
+unsigned int Transformer::getGunDamage() {return _gun.getDamage();}
+void Transformer::setGunDamage(unsigned int damage) {_gun.setDamage(damage);}
 
 bool Transformer::move() {
   return true;

@@ -4,6 +4,7 @@
 class Gun {
 public:
   Gun(unsigned int damage = 100, unsigned int range = 50);
+  ~Gun();
   unsigned int getDamage();
   void setDamage(unsigned int damage);
   unsigned int getRange();

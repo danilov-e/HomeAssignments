@@ -2,7 +2,7 @@
 
 Gun::Gun(unsigned int damage, unsigned int range)
 : _damage(damage), _range(range) {}
-
+Gun::~Gun() {}
 unsigned int Gun::getDamage() {return _damage;}
 void Gun::setDamage(unsigned int damage) {_damage=damage;}
 unsigned int Gun::getRange() {return _range;}

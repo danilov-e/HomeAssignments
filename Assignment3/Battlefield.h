@@ -4,6 +4,7 @@
 class Battlefield {
 public:
   Battlefield(unsigned int length = 1000, unsigned int width = 1000);
+  ~Battlefield();
   unsigned int getLength();
   void setLength(unsigned int);
   unsigned int getWidth();

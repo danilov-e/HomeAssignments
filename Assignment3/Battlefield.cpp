@@ -2,6 +2,7 @@
 
 Battlefield::Battlefield(unsigned int length, unsigned int width)
 : _length(length), _width(width) {}
+Battlefield::~Battlefield() {}
 
 unsigned int Battlefield::getLength() {return _length;}
 void Battlefield::setLength(unsigned int length) {_length=length;}

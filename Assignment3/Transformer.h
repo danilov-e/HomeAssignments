@@ -7,6 +7,7 @@
 class Transformer {
 public:
   Transformer(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10, unsigned int ammo = 100, unsigned int health = 100);
+  ~Transformer();
   unsigned int getLevel();
   void setLevel(unsigned int level);
   unsigned int getStrength();
