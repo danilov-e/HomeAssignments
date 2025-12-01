@@ -10,28 +10,29 @@
 
 #include "Transformer.h"
 
-class Autobot : public Transformer {
+class Autobot : public Transformer
+{
 public:
-  Autobot();
-  Autobot(Battlefield* battlefield, unsigned int level, unsigned int strength, 
-          unsigned int ammo, unsigned int health,
-          unsigned int courage, unsigned int teamBonus);
-  ~Autobot();
+    Autobot();
+    Autobot(Battlefield* battlefield, unsigned int level, unsigned int strength,
+            unsigned int ammo, unsigned int health,
+            unsigned int courage, unsigned int teamBonus);
+    ~Autobot();
 
-  void specialAbility() override;
-  void transform() override;
+    void specialAbility() override;
+    void transform() override;
 
-  
-  unsigned int getCourage();
-  void setCourage(unsigned int courage);
-  unsigned int getTeamBonus();
-  void setTeamBonus(unsigned int teamBonus);
-  
-  bool inspireTeam();
+
+    unsigned int getCourage();
+    void setCourage(unsigned int courage);
+    unsigned int getTeamBonus();
+    void setTeamBonus(unsigned int teamBonus);
+
+    bool inspireTeam();
 
 private:
-  unsigned int _courage;
-  unsigned int _teamBonus;
+    unsigned int _courage;
+    unsigned int _teamBonus;
 };
 
 std::ostream& operator<<(std::ostream& os, Autobot& autobot);

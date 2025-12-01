@@ -11,8 +11,7 @@
 #include "Maximal.h"
 #include "Decepticon.h"
 
-TEST(TransformerTest, ConstructorAndBasicGetters)
-{
+TEST(TransformerTest, ConstructorAndBasicGetters) {
     Battlefield field(500, 500);
     Autobot autobot(&field, 5, 20, 200, 150, 70, 15);
 
@@ -27,13 +26,12 @@ TEST(TransformerTest, ConstructorAndBasicGetters)
 }
 
 
-TEST(TransformerTest, CompositionAndAssociationWork)
-{
+TEST(TransformerTest, CompositionAndAssociationWork) {
     Battlefield field(800, 600);
     Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
 
     EXPECT_EQ(decepticon.getLevel(), 1);
-    EXPECT_EQ(decepticon.getGunRange(), 500);
+    EXPECT_EQ(decepticon.getGunRange(), 500);   
     EXPECT_EQ(decepticon.getGunDamage(), 10);
     EXPECT_EQ(decepticon.getBattlefieldLength(), 800);
     EXPECT_EQ(decepticon.getBattlefieldWidth(), 600);
@@ -49,8 +47,7 @@ TEST(TransformerTest, CompositionAndAssociationWork)
     EXPECT_EQ(decepticon.getBattlefieldWidth(), 1000);
 }
 
-TEST(TransformerTest, CoreMethodsReturnTrue)
-{
+TEST(TransformerTest, CoreMethodsReturnTrue) {
     Battlefield field(100, 100);
     Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
 
@@ -60,22 +57,20 @@ TEST(TransformerTest, CoreMethodsReturnTrue)
 }
 
 
-TEST(TransformerTest, VirtualMethodsPrintCorrectly)
-{
+TEST(TransformerTest, VirtualMethodsPrintCorrectly) {
     Battlefield field(100, 100);
     Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
     Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
 
     autobot.specialAbility();
-    autobot.transform();
+    autobot.transform();     
 
     decepticon.specialAbility();
-    decepticon.transform();
+    decepticon.transform();      
 }
 
 
-TEST(TransformerTest, OutputStreamOperatorWorks)
-{
+TEST(TransformerTest, OutputStreamOperatorWorks) {
     Battlefield field(200, 300);
     Autobot autobot(&field, 2, 15, 120, 90, 60, 8);
 
@@ -90,8 +85,7 @@ TEST(TransformerTest, OutputStreamOperatorWorks)
 }
 
 
-TEST(AutobotTest, AutobotSpecificMethods)
-{
+TEST(AutobotTest, AutobotSpecificMethods) {
     Battlefield field(100, 100);
     Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
 
@@ -103,8 +97,7 @@ TEST(AutobotTest, AutobotSpecificMethods)
     EXPECT_EQ(autobot.getTeamBonus(), 25);
 }
 
-TEST(DecepticonTest, DecepticonSpecificMethods)
-{
+TEST(DecepticonTest, DecepticonSpecificMethods) {
     Battlefield field(100, 100);
     Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
 
@@ -117,19 +110,17 @@ TEST(DecepticonTest, DecepticonSpecificMethods)
 }
 
 
-TEST(MaximalTest, MaximalSpecificMethods)
-{
+TEST(MaximalTest, MaximalSpecificMethods) {
     Battlefield field(100, 100);
     Maximal maximal(&field, 1, 10, 100, 100, 60, 15);
 
-
+  
     EXPECT_EQ(maximal.getLevel(), 1);
-    maximal.specialAbility();
+    maximal.specialAbility(); 
 }
 
 
-TEST(PolymorphismTest, VirtualMethodsViaBasePointer)
-{
+TEST(PolymorphismTest, VirtualMethodsViaBasePointer) {
     Battlefield field(100, 100);
     Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
     Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
@@ -138,27 +129,25 @@ TEST(PolymorphismTest, VirtualMethodsViaBasePointer)
     Transformer* t2 = &decepticon;
 
 
-    t1->specialAbility();
-    t1->transform();
+    t1->specialAbility();   
+    t1->transform();       
 
-    t2->specialAbility();
-    t2->transform();
+    t2->specialAbility();   
+    t2->transform();        
 }
 
-TEST(ConstructorTest, DefaultConstructorsWork)
-{
+TEST(ConstructorTest, DefaultConstructorsWork) {
     Autobot a1;
     Decepticon d1;
     Maximal m1;
 
-
+    
     EXPECT_GE(a1.getLevel(), 1);
     EXPECT_GE(d1.getLevel(), 1);
 }
 
 
-TEST(MaximalTest, MaximalSpecificMethodsAndOperator)
-{
+TEST(MaximalTest, MaximalSpecificMethodsAndOperator) {
     Battlefield field(200, 300);
     Maximal maximal(&field, 3, 25, 200, 150, 80, 50);
 
@@ -179,36 +168,33 @@ TEST(MaximalTest, MaximalSpecificMethodsAndOperator)
     EXPECT_NE(output.find("Tech Affinity: 95"), std::string::npos);
 }
 
-TEST(PolymorphismTest, VirtualMethodsInVectorLoop)
-{
+TEST(PolymorphismTest, VirtualMethodsInVectorLoop) {
     std::vector<std::unique_ptr<Transformer>> transformers;
     Battlefield field(100, 100);
 
-
+    
     transformers.push_back(std::make_unique<Autobot>(&field, 1, 10, 100, 100, 50, 10));
     transformers.push_back(std::make_unique<Autobot>(&field, 2, 12, 110, 110, 60, 15));
     transformers.push_back(std::make_unique<Autobot>(&field, 3, 15, 120, 120, 70, 20));
 
-
+   
     transformers.push_back(std::make_unique<Decepticon>(&field, 1, 10, 100, 100, 50, 30));
     transformers.push_back(std::make_unique<Decepticon>(&field, 2, 14, 130, 130, 70, 40));
     transformers.push_back(std::make_unique<Decepticon>(&field, 3, 18, 150, 150, 90, 50));
 
-
+  
     transformers.push_back(std::make_unique<Maximal>(&field, 1, 10, 100, 100, 60, 15));
     transformers.push_back(std::make_unique<Maximal>(&field, 2, 16, 140, 140, 80, 30));
     transformers.push_back(std::make_unique<Maximal>(&field, 3, 20, 160, 160, 100, 50));
 
-
-    for (auto& t : transformers)
-    {
-        t->specialAbility();
-        t->transform();
+ 
+    for (auto& t : transformers) {
+        t->specialAbility();  
+        t->transform();       
     }
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     Battlefield field(1000, 1000);
     Gun gun(100, 14);
