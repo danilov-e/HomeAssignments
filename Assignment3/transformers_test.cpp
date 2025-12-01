@@ -149,7 +149,7 @@ TEST(ConstructorTest, DefaultConstructorsWork) {
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     Battlefield field(1000, 1000);
-    Gun gun(100, 1488);
+    Gun gun(100, 14);
     Autobot autobot(&field, 3, 15, 150, 120, 75, 25);
     Decepticon decepticon(&field, 6, 25, 220, 180, 90, 40);
     Maximal maximal(&field, 4, 18, 180, 130, 85, 95);
