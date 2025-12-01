@@ -11,8 +11,12 @@
 
 class Gun {
 public:
-  Gun(unsigned int damage = 100, unsigned int range = 50);
+  Gun();
+  Gun(unsigned int damage, unsigned int range);
   ~Gun();
+ 
+  virtual void reload();
+  virtual void drop();
   unsigned int getDamage();
   void setDamage(unsigned int damage);
   unsigned int getRange();

@@ -12,10 +12,15 @@
 
 class Maximal : public Transformer {
 public:
-  Maximal(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10,
-          unsigned int ammo = 100, unsigned int health = 100,
-          unsigned int techAffinity = 50, unsigned int transformationSpeed = 80);
-  ~Maximal();  
+  Maximal();
+  Maximal(Battlefield* battlefield, unsigned int level, unsigned int strength,
+          unsigned int ammo, unsigned int health,
+          unsigned int techAffinity, unsigned int transformationSpeed);
+  ~Maximal();
+
+  void specialAbility() override;
+  void transform() override;
+  
   unsigned int getTechAffinity();
   void setTechAffinity(unsigned int techAffinity);
   unsigned int getTransformationSpeed();

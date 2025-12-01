@@ -6,6 +6,8 @@
 
 
 #include "Transformer.h"
+Transformer::Transformer()
+: _battlefield(new Battlefield(100, 100)), _level(1), _strength(10), _ammo(100), _health(100), _gun(10, 500) {}
 
 Transformer::Transformer(Battlefield* battlefield, unsigned int level, unsigned int strength, unsigned int ammo, unsigned int health)
 : _battlefield(battlefield), _level(level), _strength(strength), _ammo(ammo), _health(health), _gun(10, 500) {}

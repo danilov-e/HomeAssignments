@@ -12,9 +12,10 @@
 
 class Autobot : public Transformer {
 public:
-  Autobot(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10, 
-          unsigned int ammo = 100, unsigned int health = 100,
-          unsigned int courage = 50, unsigned int teamBonus = 10);
+  Autobot();
+  Autobot(Battlefield* battlefield, unsigned int level, unsigned int strength, 
+          unsigned int ammo, unsigned int health,
+          unsigned int courage, unsigned int teamBonus);
   ~Autobot();
 
   void specialAbility() override;

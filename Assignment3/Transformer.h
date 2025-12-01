@@ -12,6 +12,7 @@
 #include <iostream>
 class Transformer {
 public:
+  Transformer();
   Transformer(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10, unsigned int ammo = 100, unsigned int health = 100);
   ~Transformer();
 

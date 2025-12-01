@@ -11,8 +11,11 @@
 
 class Battlefield {
 public:
-  Battlefield(unsigned int length = 1000, unsigned int width = 1000);
+  Battlefield();
+  Battlefield(unsigned int length, unsigned int width);
   ~Battlefield();
+  virtual void deployObstacles();
+  virtual void describe();
   unsigned int getLength();
   void setLength(unsigned int);
   unsigned int getWidth();

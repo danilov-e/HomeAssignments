@@ -7,9 +7,22 @@
 
 #include "Gun.h"
 
+Gun::Gun() : _damage(100), _range(50) {}
+
 Gun::Gun(unsigned int damage, unsigned int range)
-: _damage(damage), _range(range) {}
+    : _damage(damage), _range(range) {} 
+
 Gun::~Gun() {}
+
+void Gun::reload() {
+    std::cout << "Gun::reload()" << std::endl;
+}
+
+void Gun::drop() {
+    std::cout << "Gun::drop()" << std::endl;
+}
+
+
 unsigned int Gun::getDamage() {return _damage;}
 void Gun::setDamage(unsigned int damage) {_damage=damage;}
 unsigned int Gun::getRange() {return _range;}

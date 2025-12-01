@@ -7,6 +7,11 @@
 
 #include "Autobot.h"
 
+Autobot::Autobot()
+    : Transformer(new Battlefield(100, 100)),
+      _courage(50),
+      _teamBonus(10) {}
+
 Autobot::Autobot(Battlefield* battlefield, unsigned int level, unsigned int strength,
                  unsigned int ammo, unsigned int health, unsigned int courage, unsigned int teamBonus)
 : Transformer(battlefield, level, strength, ammo, health), _courage(courage), _teamBonus(teamBonus) {}
