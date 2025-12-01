@@ -40,7 +40,14 @@ bool Transformer::jump() {
   return true;
 }
 
-
-
-
-
+std::ostream& operator<<(std::ostream& os, Transformer& t) {
+    os << "Transformer:\n"
+       << "  Level: " << t.getLevel() << "\n"
+       << "  Strength: " << t.getStrength() << "\n"
+       << "  Ammo: " << t.getAmmo() << "\n"
+       << "  Health: " << t.getHealth() << "\n"
+       << "  Gun Range: " << t.getGunRange() << "\n"
+       << "  Gun Damage: " << t.getGunDamage() << "\n"
+       << "  Battlefield: " << t.getBattlefieldLength() << " x " << t.getBattlefieldWidth();
+    return os;
+}

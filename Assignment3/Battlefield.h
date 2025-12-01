@@ -7,6 +7,7 @@
 
 #ifndef BATTLEFIELD_H
 #define BATTLEFIELD_H
+#include <iostream>
 
 class Battlefield {
 public:
@@ -20,4 +21,7 @@ private:
   unsigned int _length;
   unsigned int _width;
 };
+
+std::ostream& operator<<(std::ostream& os, Battlefield& battlefield);
+
 #endif

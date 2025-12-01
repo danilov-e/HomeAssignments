@@ -15,7 +15,12 @@ public:
   Autobot(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10, 
           unsigned int ammo = 100, unsigned int health = 100,
           unsigned int courage = 50, unsigned int teamBonus = 10);
-  ~Autobot();  
+  ~Autobot();
+
+  void specialAbility() override;
+  void transform() override;
+
+  
   unsigned int getCourage();
   void setCourage(unsigned int courage);
   unsigned int getTeamBonus();
@@ -27,5 +32,8 @@ private:
   unsigned int _courage;
   unsigned int _teamBonus;
 };
+
+std::ostream& operator<<(std::ostream& os, Autobot& autobot);
+
 
 #endif

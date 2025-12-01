@@ -19,3 +19,17 @@ void Maximal::setTransformationSpeed(unsigned int transformationSpeed) { _transf
 bool Maximal::transformToBeastMode() {
   return true;
 }
+
+std::ostream& operator<<(std::ostream& os, Maximal& m) {
+    os << "Maximal:\n"
+       << "  Level: " << m.getLevel() << "\n"
+       << "  Strength: " << m.getStrength() << "\n"
+       << "  Ammo: " << m.getAmmo() << "\n"
+       << "  Health: " << m.getHealth() << "\n"
+       << "  Gun Range: " << m.getGunRange() << "\n"
+       << "  Gun Damage: " << m.getGunDamage() << "\n"
+       << "  Battlefield: " << m.getBattlefieldLength() << " x " << m.getBattlefieldWidth() << "\n"
+       << "  Tech Affinity: " << m.getTechAffinity() << "\n"
+       << "  Transformation Speed: " << m.getTransformationSpeed();
+    return os;
+}

@@ -9,11 +9,18 @@
 
 #include "Gun.h"
 #include "Battlefield.h"
-
+#include <iostream>
 class Transformer {
 public:
   Transformer(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10, unsigned int ammo = 100, unsigned int health = 100);
   ~Transformer();
+
+  virtual void specialAbility() = 0;
+
+  virtual void transform() {
+    std::cout << "Transformer::transform()" << std::endl;
+  }
+
   unsigned int getLevel();
   void setLevel(unsigned int level);
   unsigned int getStrength();
@@ -44,5 +51,8 @@ private:
   Gun _gun;
   Battlefield* _battlefield;
 };
+
+std::ostream& operator<<(std::ostream& os, Transformer& transformer);
+
 #endif
 

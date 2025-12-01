@@ -28,4 +28,6 @@ private:
   unsigned int _transformationSpeed;
 };
 
+std::ostream& operator<<(std::ostream& os, Maximal& maximal);
+
 #endif

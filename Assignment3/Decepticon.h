@@ -28,4 +28,6 @@ private:
   unsigned int _stealthLevel;
 };
 
+std::ostream& operator<<(std::ostream& os, Decepticon& decepticon);
+
 #endif

@@ -7,6 +7,7 @@
 
 #ifndef GUN_H
 #define GUN_H
+#include <iostream>
 
 class Gun {
 public:
@@ -22,4 +23,7 @@ private:
   unsigned int _damage;
   unsigned int _range;
 };
+
+std::ostream& operator<<(std::ostream& os, Gun& gun);
+
 #endif 

@@ -20,3 +20,18 @@ void Decepticon::setStealthLevel(unsigned int stealthLevel) { _stealthLevel = st
 bool Decepticon::executeEvilPlan() {
   return true;
 }
+
+std::ostream& operator<<(std::ostream& os, Decepticon& d) {
+    os << "Decepticon:\n"
+       << "  Level: " << d.getLevel() << "\n"
+       << "  Strength: " << d.getStrength() << "\n"
+       << "  Ammo: " << d.getAmmo() << "\n"
+       << "  Health: " << d.getHealth() << "\n"
+       << "  Gun Range: " << d.getGunRange() << "\n"
+       << "  Gun Damage: " << d.getGunDamage() << "\n"
+       << "  Battlefield: " << d.getBattlefieldLength() << " x " << d.getBattlefieldWidth() << "\n"
+       << "  Cunning: " << d.getCunning() << "\n"
+       << "  Stealth Level: " << d.getStealthLevel();
+    return os;
+}
+

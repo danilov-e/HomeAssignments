@@ -16,3 +16,9 @@ void Battlefield::setLength(unsigned int length) {_length=length;}
 unsigned int Battlefield::getWidth() {return _width;}
 void Battlefield::setWidth(unsigned int width) {_width=width;}
 
+std::ostream& operator<<(std::ostream& os, Battlefield& b) {
+    os << "Battlefield:\n"
+       << "  Length: " << b.getLength() << "\n"
+       << "  Width: " << b.getWidth() << "\n";
+    return os;
+}

@@ -23,3 +23,11 @@ bool Gun::enchant() {
   return true;
 }
 
+std::ostream& operator<<(std::ostream& os, Gun& g) {
+    os << "Gun:\n"
+       << "  Damage: " << g.getDamage() << "\n"
+       << "  Range: " << g.getRange() << "\n";
+    return os;
+}
+
+

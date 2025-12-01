@@ -136,5 +136,18 @@ TEST(DecepticonTest, DecepticonSpecificMethods) {
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
+    Battlefield field(1000, 1000);
+    Transformer transformer(&field, 5, 20, 200, 150);
+    Gun gun(100, 1488);
+    Autobot autobot(&field, 3, 15, 150, 120, 75, 25);
+    Decepticon decepticon(&field, 6, 25, 220, 180, 90, 40);
+    Maximal maximal(&field, 4, 18, 180, 130, 85, 95);
+    std::cout << transformer << std::endl;
+    std::cout << gun  << std::endl;
+    std::cout << field << std::endl;
+    std::cout << autobot << std::endl;
+    std::cout << decepticon << std::endl;
+    std::cout << maximal << std::endl;
     return RUN_ALL_TESTS();
+
 }
