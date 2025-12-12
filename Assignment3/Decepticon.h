@@ -10,22 +10,31 @@
 
 #include "Transformer.h"
 
-class Decepticon : public Transformer {
+class Decepticon : public Transformer
+{
 public:
-  Decepticon(Battlefield* battlefield, unsigned int level = 1, unsigned int strength = 10,
-             unsigned int ammo = 100, unsigned int health = 100,
-             unsigned int cunning = 50, unsigned int stealthLevel = 30);
-  ~Decepticon();  
-  unsigned int getCunning();
-  void setCunning(unsigned int cunning);
-  unsigned int getStealthLevel();
-  void setStealthLevel(unsigned int stealthLevel);
-  
-  bool executeEvilPlan();
+    Decepticon();
+    Decepticon(Battlefield* battlefield, unsigned int level, unsigned int strength,
+               unsigned int ammo, unsigned int health,
+               unsigned int cunning, unsigned int stealthLevel);
+    ~Decepticon();
+
+    void specialAbility() override;
+    void transform() override;
+
+
+    unsigned int getCunning();
+    void setCunning(unsigned int cunning);
+    unsigned int getStealthLevel();
+    void setStealthLevel(unsigned int stealthLevel);
+
+    bool executeEvilPlan();
 
 private:
-  unsigned int _cunning;
-  unsigned int _stealthLevel;
+    unsigned int _cunning;
+    unsigned int _stealthLevel;
 };
+
+std::ostream& operator<<(std::ostream& os, Decepticon& decepticon);
 
 #endif

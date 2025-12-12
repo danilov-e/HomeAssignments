@@ -7,19 +7,28 @@
 
 #ifndef GUN_H
 #define GUN_H
+#include <iostream>
 
-class Gun {
+class Gun
+{
 public:
-  Gun(unsigned int damage = 100, unsigned int range = 50);
-  ~Gun();
-  unsigned int getDamage();
-  void setDamage(unsigned int damage);
-  unsigned int getRange();
-  void setRange(unsigned int range);
-  bool upgrade();
-  bool enchant();
+    Gun();
+    Gun(unsigned int damage, unsigned int range);
+    ~Gun();
+
+    virtual void reload();
+    virtual void drop();
+    unsigned int getDamage();
+    void setDamage(unsigned int damage);
+    unsigned int getRange();
+    void setRange(unsigned int range);
+    bool upgrade();
+    bool enchant();
 private:
-  unsigned int _damage;
-  unsigned int _range;
+    unsigned int _damage;
+    unsigned int _range;
 };
-#endif 
+
+std::ostream& operator<<(std::ostream& os, Gun& gun);
+
+#endif

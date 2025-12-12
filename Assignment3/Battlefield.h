@@ -7,17 +7,25 @@
 
 #ifndef BATTLEFIELD_H
 #define BATTLEFIELD_H
+#include <iostream>
 
-class Battlefield {
+class Battlefield
+{
 public:
-  Battlefield(unsigned int length = 1000, unsigned int width = 1000);
-  ~Battlefield();
-  unsigned int getLength();
-  void setLength(unsigned int);
-  unsigned int getWidth();
-  void setWidth(unsigned int);
+    Battlefield();
+    Battlefield(unsigned int length, unsigned int width);
+    ~Battlefield();
+    virtual void deployObstacles();
+    virtual void describe();
+    unsigned int getLength();
+    void setLength(unsigned int);
+    unsigned int getWidth();
+    void setWidth(unsigned int);
 private:
-  unsigned int _length;
-  unsigned int _width;
+    unsigned int _length;
+    unsigned int _width;
 };
+
+std::ostream& operator<<(std::ostream& os, Battlefield& battlefield);
+
 #endif

@@ -11,130 +11,215 @@
 #include "Maximal.h"
 #include "Decepticon.h"
 
-TEST(GunTest, ConstructorAndGetters) {
-    Gun gun(150, 75);
-    EXPECT_EQ(gun.getDamage(), 150);
-    EXPECT_EQ(gun.getRange(), 75);
+TEST(TransformerTest, ConstructorAndBasicGetters)
+{
+    Battlefield field(500, 500);
+    Autobot autobot(&field, 5, 20, 200, 150, 70, 15);
+
+    EXPECT_EQ(autobot.getLevel(), 5);
+    EXPECT_EQ(autobot.getStrength(), 20);
+    EXPECT_EQ(autobot.getAmmo(), 200);
+    EXPECT_EQ(autobot.getHealth(), 150);
+    EXPECT_EQ(autobot.getCourage(), 70);
+    EXPECT_EQ(autobot.getTeamBonus(), 15);
+    EXPECT_EQ(autobot.getBattlefieldLength(), 500);
+    EXPECT_EQ(autobot.getBattlefieldWidth(), 500);
 }
 
-TEST(GunTest, SettersWork) {
-    Gun gun;
-    gun.setDamage(200);
-    gun.setRange(100);
-    EXPECT_EQ(gun.getDamage(), 200);
-    EXPECT_EQ(gun.getRange(), 100);
-}
 
-TEST(BattlefieldTest, ConstructorAndGetters) {
-    Battlefield field(2000, 1500);
-    EXPECT_EQ(field.getLength(), 2000);
-    EXPECT_EQ(field.getWidth(), 1500);
-}
-
-TEST(BattlefieldTest, SettersWork) {
-    Battlefield field;
-    field.setLength(3000);
-    field.setWidth(2000);
-    EXPECT_EQ(field.getLength(), 3000);
-    EXPECT_EQ(field.getWidth(), 2000);
-}
-
-TEST(TransformerTest, ConstructorAndBasicGetters) {
-    Battlefield field(1000, 1000);
-    Transformer transformer(&field, 5, 20, 200, 150);
-    
-    EXPECT_EQ(transformer.getLevel(), 5);
-    EXPECT_EQ(transformer.getStrength(), 20);
-    EXPECT_EQ(transformer.getAmmo(), 200);
-    EXPECT_EQ(transformer.getHealth(), 150);
-}
-
-TEST(TransformerTest, CompositionWorks) {
-    Battlefield field(1000, 1000);
-    Transformer transformer(&field);
-    
-    EXPECT_GT(transformer.getGunDamage(), 0);
-    EXPECT_GT(transformer.getGunRange(), 0);
-    
-    transformer.setGunDamage(300);
-    transformer.setGunRange(150);
-    EXPECT_EQ(transformer.getGunDamage(), 300);
-    EXPECT_EQ(transformer.getGunRange(), 150);
-}
-
-TEST(TransformerTest, AssociationWorks) {
+TEST(TransformerTest, CompositionAndAssociationWork)
+{
     Battlefield field(800, 600);
-    Transformer transformer(&field);
-    
-    EXPECT_EQ(transformer.getBattlefieldLength(), 800);
-    EXPECT_EQ(transformer.getBattlefieldWidth(), 600);
-    
-    transformer.setBattlefieldLength(1200);
-    transformer.setBattlefieldWidth(900);
-    EXPECT_EQ(transformer.getBattlefieldLength(), 1200);
-    EXPECT_EQ(transformer.getBattlefieldWidth(), 900);
+    Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
+
+    EXPECT_EQ(decepticon.getLevel(), 1);
+    EXPECT_EQ(decepticon.getGunRange(), 500);
+    EXPECT_EQ(decepticon.getGunDamage(), 10);
+    EXPECT_EQ(decepticon.getBattlefieldLength(), 800);
+    EXPECT_EQ(decepticon.getBattlefieldWidth(), 600);
+
+    decepticon.setGunRange(25);
+    decepticon.setGunDamage(800);
+    decepticon.setBattlefieldLength(1000);
+    decepticon.setBattlefieldWidth(1000);
+
+    EXPECT_EQ(decepticon.getGunRange(), 25);
+    EXPECT_EQ(decepticon.getGunDamage(), 800);
+    EXPECT_EQ(decepticon.getBattlefieldLength(), 1000);
+    EXPECT_EQ(decepticon.getBattlefieldWidth(), 1000);
 }
 
-TEST(TransformerTest, MethodsReturnTrue) {
-    Battlefield field(1000, 1000);
-    Transformer transformer(&field);
-    
-    EXPECT_TRUE(transformer.move());
-    EXPECT_TRUE(transformer.fire());
-    EXPECT_TRUE(transformer.jump());
+TEST(TransformerTest, CoreMethodsReturnTrue)
+{
+    Battlefield field(100, 100);
+    Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
+
+    EXPECT_TRUE(autobot.move());
+    EXPECT_TRUE(autobot.fire());
+    EXPECT_TRUE(autobot.jump());
 }
 
-TEST(AutobotTest, ConstructorAndInheritedFields) {
-    Battlefield field(1000, 1000);
-    Autobot autobot(&field, 3, 15, 150, 120, 75, 25);
-    
-    EXPECT_EQ(autobot.getLevel(), 3);
-    EXPECT_EQ(autobot.getCourage(), 75);
+
+TEST(TransformerTest, VirtualMethodsPrintCorrectly)
+{
+    Battlefield field(100, 100);
+    Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
+    Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
+
+    autobot.specialAbility();
+    autobot.transform();
+
+    decepticon.specialAbility();
+    decepticon.transform();
+}
+
+
+TEST(TransformerTest, OutputStreamOperatorWorks)
+{
+    Battlefield field(200, 300);
+    Autobot autobot(&field, 2, 15, 120, 90, 60, 8);
+
+    std::ostringstream oss;
+    oss << autobot;
+    std::string output = oss.str();
+
+    EXPECT_NE(output.find("Autobot:"), std::string::npos);
+    EXPECT_NE(output.find("Level: 2"), std::string::npos);
+    EXPECT_NE(output.find("Courage: 60"), std::string::npos);
+    EXPECT_NE(output.find("Battlefield: 200 x 300"), std::string::npos);
+}
+
+
+TEST(AutobotTest, AutobotSpecificMethods)
+{
+    Battlefield field(100, 100);
+    Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
+
+    EXPECT_TRUE(autobot.inspireTeam());
+
+    autobot.setCourage(100);
+    autobot.setTeamBonus(25);
+    EXPECT_EQ(autobot.getCourage(), 100);
     EXPECT_EQ(autobot.getTeamBonus(), 25);
 }
 
-TEST(AutobotTest, AutobotSpecificMethods) {
-    Battlefield field(1000, 1000);
-    Autobot autobot(&field);
-    
-    EXPECT_TRUE(autobot.inspireTeam());
-    EXPECT_TRUE(autobot.move());
-}
+TEST(DecepticonTest, DecepticonSpecificMethods)
+{
+    Battlefield field(100, 100);
+    Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
 
-TEST(MaximalTest, ConstructorAndSpecificFields) {
-    Battlefield field(1000, 1000);
-    Maximal maximal(&field, 4, 18, 180, 130, 85, 95);
-    
-    EXPECT_EQ(maximal.getTechAffinity(), 85);
-    EXPECT_EQ(maximal.getTransformationSpeed(), 95);
-    EXPECT_EQ(maximal.getLevel(), 4);
-}
-
-TEST(MaximalTest, MaximalSpecificMethods) {
-    Battlefield field(1000, 1000);
-    Maximal maximal(&field);
-    
-    EXPECT_TRUE(maximal.transformToBeastMode());
-    EXPECT_TRUE(maximal.fire()); 
-}
-TEST(DecepticonTest, ConstructorAndSpecificFields) {
-    Battlefield field(1000, 1000);
-    Decepticon decepticon(&field, 6, 25, 220, 180, 90, 40);
-    
-    EXPECT_EQ(decepticon.getCunning(), 90);
-    EXPECT_EQ(decepticon.getStealthLevel(), 40);
-    EXPECT_EQ(decepticon.getStrength(), 25);
-}
-
-TEST(DecepticonTest, DecepticonSpecificMethods) {
-    Battlefield field(1000, 1000);
-    Decepticon decepticon(&field);
-    
     EXPECT_TRUE(decepticon.executeEvilPlan());
-    EXPECT_TRUE(decepticon.jump());
+
+    decepticon.setCunning(90);
+    decepticon.setStealthLevel(50);
+    EXPECT_EQ(decepticon.getCunning(), 90);
+    EXPECT_EQ(decepticon.getStealthLevel(), 50);
 }
 
-int main(int argc, char **argv) {
+
+TEST(MaximalTest, MaximalSpecificMethods)
+{
+    Battlefield field(100, 100);
+    Maximal maximal(&field, 1, 10, 100, 100, 60, 15);
+
+
+    EXPECT_EQ(maximal.getLevel(), 1);
+    maximal.specialAbility();
+}
+
+
+TEST(PolymorphismTest, VirtualMethodsViaBasePointer)
+{
+    Battlefield field(100, 100);
+    Autobot autobot(&field, 1, 10, 100, 100, 50, 10);
+    Decepticon decepticon(&field, 1, 10, 100, 100, 50, 30);
+
+    Transformer* t1 = &autobot;
+    Transformer* t2 = &decepticon;
+
+
+    t1->specialAbility();
+    t1->transform();
+
+    t2->specialAbility();
+    t2->transform();
+}
+
+TEST(ConstructorTest, DefaultConstructorsWork)
+{
+    Autobot a1;
+    Decepticon d1;
+    Maximal m1;
+
+
+    EXPECT_GE(a1.getLevel(), 1);
+    EXPECT_GE(d1.getLevel(), 1);
+}
+
+
+TEST(MaximalTest, MaximalSpecificMethodsAndOperator)
+{
+    Battlefield field(200, 300);
+    Maximal maximal(&field, 3, 25, 200, 150, 80, 50);
+
+    EXPECT_EQ(maximal.getTechAffinity(), 80);
+    EXPECT_EQ(maximal.getTransformationSpeed(), 50);
+
+    maximal.setTechAffinity(95);
+    maximal.setTransformationSpeed(70);
+    EXPECT_EQ(maximal.getTechAffinity(), 95);
+    EXPECT_EQ(maximal.getTransformationSpeed(), 70);
+
+    EXPECT_TRUE(maximal.transformToBeastMode());
+
+    std::ostringstream oss;
+    oss << maximal;
+    std::string output = oss.str();
+    EXPECT_NE(output.find("Maximal:"), std::string::npos);
+    EXPECT_NE(output.find("Tech Affinity: 95"), std::string::npos);
+}
+
+TEST(PolymorphismTest, VirtualMethodsInVectorLoop)
+{
+    std::vector<std::unique_ptr<Transformer>> transformers;
+    Battlefield field(100, 100);
+
+
+    transformers.push_back(std::make_unique<Autobot>(&field, 1, 10, 100, 100, 50, 10));
+    transformers.push_back(std::make_unique<Autobot>(&field, 2, 12, 110, 110, 60, 15));
+    transformers.push_back(std::make_unique<Autobot>(&field, 3, 15, 120, 120, 70, 20));
+
+
+    transformers.push_back(std::make_unique<Decepticon>(&field, 1, 10, 100, 100, 50, 30));
+    transformers.push_back(std::make_unique<Decepticon>(&field, 2, 14, 130, 130, 70, 40));
+    transformers.push_back(std::make_unique<Decepticon>(&field, 3, 18, 150, 150, 90, 50));
+
+
+    transformers.push_back(std::make_unique<Maximal>(&field, 1, 10, 100, 100, 60, 15));
+    transformers.push_back(std::make_unique<Maximal>(&field, 2, 16, 140, 140, 80, 30));
+    transformers.push_back(std::make_unique<Maximal>(&field, 3, 20, 160, 160, 100, 50));
+
+
+    for (auto& t : transformers)
+    {
+        t->specialAbility();
+        t->transform();
+    }
+}
+
+int main(int argc, char **argv)
+{
     ::testing::InitGoogleTest(&argc, argv);
+    Battlefield field(1000, 1000);
+    Gun gun(100, 14);
+    Autobot autobot(&field, 3, 15, 150, 120, 75, 25);
+    Decepticon decepticon(&field, 6, 25, 220, 180, 90, 40);
+    Maximal maximal(&field, 4, 18, 180, 130, 85, 95);
+    std::cout << gun  << std::endl;
+    std::cout << field << std::endl;
+    std::cout << autobot << std::endl;
+    std::cout << decepticon << std::endl;
+    std::cout << maximal << std::endl;
     return RUN_ALL_TESTS();
+
 }
