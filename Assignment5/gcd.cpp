@@ -6,10 +6,12 @@
 
 #include "gcd.h"
 
-long gcd(long a, long b) {
+long gcd(long a, long b)
+{
     a = a < 0 ? -a : a;
     b = b < 0 ? -b : b;
-    while (b != 0) {
+    while (b != 0)
+    {
         long temp = b;
         b = a % b;
         a = temp;

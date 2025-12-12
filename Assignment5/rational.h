@@ -9,7 +9,8 @@
 
 #include <iostream>
 
-class Rational {
+class Rational
+{
 private:
     long num;
     long den;
@@ -19,8 +20,14 @@ private:
 public:
     Rational(long n = 0, long d = 1);
 
-    long numerator() const { return num; }
-    long denominator() const { return den; }
+    long numerator() const
+    {
+        return num;
+    }
+    long denominator() const
+    {
+        return den;
+    }
 
     Rational operator+(const Rational& other) const;
     Rational operator-(const Rational& other) const;
