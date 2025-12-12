@@ -9,6 +9,7 @@ private:
     T data[M][N];
 
 public:
+    template<size_t, size_t, typename> friend class Matrix;
     Matrix() {
         for (size_t i = 0; i < M; ++i)
             for (size_t j = 0; j < N; ++j)
