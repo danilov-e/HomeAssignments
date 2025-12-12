@@ -1,3 +1,9 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
 #ifndef MATRIX_H
 #define MATRIX_H
 

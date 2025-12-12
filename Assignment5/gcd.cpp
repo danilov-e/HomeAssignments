@@ -1,3 +1,9 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
 #include "gcd.h"
 
 long gcd(long a, long b) {

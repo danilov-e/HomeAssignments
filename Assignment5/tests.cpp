@@ -1,3 +1,9 @@
+/*
+ * Egor Danilov
+ * st141853@student.spbu.ru
+ * My home assignment 3
+ */
+
 #include <gtest/gtest.h>
 #include "matrix.h"
 #include "rational.h"
