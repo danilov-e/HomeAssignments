@@ -5,7 +5,7 @@
  */
 
 #ifndef REVERSEFILE_H
-#define REVERSEFILE__H
+#define REVERSEFILE_H
 
 int reverseFile();
 int reverseArray(char*, int);
